@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Galeria | Salvito O Saltarico</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;800&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
+
+    <style>
+                /* Vermelho apenas no Título Principal */
+footer h5[style*="color: var(--primary)"] {
+    color: #e30613 !important;
+}
+
+/* Vermelho nos ícones de contacto (Geo, Telefone, Envelope) */
+footer .list-unstyled .bi-geo-alt-fill,
+footer .list-unstyled .bi-telephone-fill,
+footer .list-unstyled .bi-envelope-fill {
+    color: #e30613 !important;
+}
+
+
+footer .fw-bold.text-white {
+    color: #ffffff !important;
+}
+        :root {
+            --primary: #e30613;
+            --secondary: #ffd500;
+            --dark: #1a1a1a;
+            --light: #f8f9fa;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background: var(--light);
+            color: var(--dark);
+        }
+
+        /* NAVBAR */
+        .navbar {
+    background: var(--dark) !important; /* Usa o #1a1a1a em vez de preto transparente */
+    backdrop-filter: blur(10px);
+    padding: 10px 0;
+    z-index: 2000;
+}
+        .navbar-brand img { height: 50px; width: auto; }
+        .nav-link { color: white !important; font-weight: 600; margin: 0 10px; }
+        .nav-link:hover { color: var(--primary) !important; }
+
+        /* HEADER */
+        .gallery-header {
+            padding: 150px 0 60px;
+            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), 
+                        url('https://images.unsplash.com/photo-1533777857889-4be7c70b33f7?q=80&w=2070') center/cover;
+            color: white;
+            text-align: center;
+        }
+
+        /* FORMULÁRIO DE CONTACTO */
+        #contacto {
+            padding: 100px 0;
+            background-color: #f1f1f1;
+        }
+        .form-control {
+            border-radius: 10px;
+            padding: 12px 20px;
+            border: 1px solid #ddd;
+            margin-bottom: 15px;
+        }
+        .form-control:focus {
+            border-color: var(--primary);
+            box-shadow: 0 0 0 0.25rem rgba(227, 6, 19, 0.1);
+        }
+
+        /* BOTÃO MODERN */
+        .btn-modern {
+            background: var(--primary);
+            color: white !important;
+            border: none;
+            padding: 15px 40px;
+            font-weight: 700;
+            border-radius: 50px;
+            text-transform: uppercase;
+            transition: 0.3s;
+            box-shadow: 0 5px 15px rgba(227, 6, 19, 0.3);
+            text-decoration: none;
+            display: inline-block;
+        }
+        .btn-modern:hover {
+            transform: translateY(-3px);
+            background: #c20511;
+            box-shadow: 0 8px 20px rgba(227, 6, 19, 0.4);
+        }
+
+        /* WHATSAPP */
+        .whatsapp { position: fixed; bottom: 25px; right: 25px; background: #25D366; color: white; width: 60px; height: 60px; display: flex; align-items: center; justify-content: center; border-radius: 50%; font-size: 30px; z-index: 3000; text-decoration: none; box-shadow: 0 10px 20px rgba(0,0,0,0.3); }
+
+        /* FOOTER */
+        footer a.text-secondary { transition: all 0.3s ease; display: inline-block; }
+        footer a.text-secondary:hover { color: var(--primary) !important; transform: translateX(8px); }
+        .social-icons a { transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275); display: inline-block; }
+        .social-icons a:hover { color: var(--primary) !important; transform: translateY(-5px) scale(1.2); }
+        /* Estilo idêntico ao "Salvito o Saltarico" do topo */
+.contact-title-display {
+    font-size: clamp(2.5rem, 8vw, 4.5rem); /* Tamanho grande e responsivo */
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: -1.5px;
+    text-shadow: 2px 2px 10px rgba(0,0,0,0.3);
+    margin-bottom: 10px;
+    line-height: 1.1;
+}
+
+/* Subtítulo leve para criar contraste elegante */
+.contact-subtitle-light {
+    font-weight: 400; /* Peso fino para contrastar com o 800 */
+    font-size: clamp(1.1rem, 3vw, 1.4rem);
+    opacity: 0.9;
+    letter-spacing: 0.5px;
+}
+
+/* Ajuste no Header para dar mais espaço ao título grande */
+.gallery-header {
+    padding: 180px 0 100px !important;
+}
+    </style>
+</head>
+<body>
+
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+    <div class="container">
+        <a class="navbar-brand d-flex align-items-center" href="homepage.html">
+            <img src="../img/logo.jpg" alt="Salvito Logo" onerror="this.style.display='none'">
+            <span class="text-white fw-bold ms-2">SALVITO</span>
+        </a>
+
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-content="#menu" data-bs-target="#menu" aria-controls="menu" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="menu">
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item"><a class="nav-link" href="homepage.html">Início</a></li>
+                <li class="nav-item"><a class="nav-link" href="homepage.html#servicos">Serviços</a></li>
+                <li class="nav-item"><a class="nav-link" href="galeria.html">Galeria</a></li>
+                <li class="nav-item"><a class="nav-link" href="#contacto">Contacto</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+   <header class="gallery-header">
+    <div class="container">
+        <h1 class="contact-title-display">Contacto</h1>
+        
+        <p class="contact-subtitle-light">Fale connosco e reserve a sua data!</p>
+    </div>
+</header>
+
+    <section id="contacto">
+        <div class="container">
+            <div class="shadow-lg p-5 bg-white rounded-4 mx-auto" style="max-width: 700px;">
+                <div class="text-center mb-4">
+                    <h2 class="fw-bold">Envie-nos uma Mensagem</h2>
+                    <p class="text-muted">Peça o seu orçamento gratuito em poucos minutos.</p>
+                </div>
+                <form id="contactForm">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <input type="text" class="form-control" placeholder="Introduza o seu Nome" required>
+                        </div>
+                        <div class="col-md-6">
+                            <input type="email" class="form-control" placeholder="Introduza o seu Email" required>
+                        </div>
+                    </div>
+                    <input type="text" class="form-control" placeholder="Assunto (Ex: Aniversário)">
+                    <textarea class="form-control" rows="4" placeholder="Como podemos ajudar no seu evento?" required></textarea>
+                    <div class="text-center mt-3">
+                        <button type="submit" class="btn btn-modern w-100">Enviar Agora <i class="bi bi-send ms-2"></i></button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+
+     <footer class="text-white pt-5 pb-3" style="background-color: var(--dark);">
+        <div class="container">
+            <div class="row g-4">
+                <div class="col-lg-4 col-md-6">
+                    <h5 class="fw-bold mb-4" style="color: var(--primary);">Salvito O Saltarico</h5>
+                    <p class="text-secondary">Especialistas em transformar eventos em momentos mágicos.</p>
+                    <div class="mt-4 social-icons">
+                        <a href="https://www.facebook.com/p/Salvito-O-Saltarico-Aluguer-de-Insufl%C3%A1veis-61572297310450/" target="_blank" class="text-white me-3 fs-4"><i class="bi bi-facebook"></i></a>
+                        <a href="https://www.instagram.com/salvitoosaltarico/" target="_blank" class="text-white me-3 fs-4"><i class="bi bi-instagram"></i></a>
+                    </div>
+                </div>
+
+                <div class="col-lg-2 col-md-6">
+                    <h5 class="fw-bold mb-4">Navegação</h5>
+                    <ul class="list-unstyled">
+                        <li class="mb-2"><a href="homepage.html" class="text-secondary text-decoration-none">Início</a></li>
+                        <li class="mb-2"><a href="homepage.html#servicos" class="text-secondary text-decoration-none">Serviços</a></li>
+                        <li class="mb-2"><a href="galeria.html" class="text-secondary text-decoration-none">Galeria</a></li>
+                        <li class="mb-2"><a href="homepage.html#contacto" class="text-secondary text-decoration-none">Contacto</a></li>
+                    </ul>
+                </div>
+
+                <div class="col-lg-3 col-md-6">
+                    <h5 class="fw-bold mb-4">Contacto</h5>
+                    <ul class="list-unstyled text-secondary">
+                        <li class="mb-3"><i class="bi bi-geo-alt-fill me-2 text-white"></i> Região de Viseu</li>
+                        <li class="mb-3"><i class="bi bi-telephone-fill me-2 text-white"></i> +351 925 112 939</li>
+                        <li class="mb-3"><i class="bi bi-envelope-fill me-2 text-white"></i> marcelo_filipe93@hotmail.com</li>
+                    </ul>
+                </div>
+
+                <div class="col-lg-3 col-md-6 text-center text-md-start">
+                    <h5 class="fw-bold mb-4">Horário</h5>
+                    <p class="text-secondary mb-1">Segunda - Sábado</p>
+                    <p class="fw-bold text-white">09:00h — 19:00h</p>
+                    <p class="text-secondary mb-1">Eventos</p>
+                    <p class="fw-bold text-white">Sob Agendamento</p>
+                </div>
+            </div>
+            </div>
+            <hr class="my-4" style="opacity: 0.1;">
+            <div class="text-center text-secondary small">
+                <p>&copy; 2026 Salvito O Saltarico. Todos os direitos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <a class="whatsapp" href="https://wa.me/351924295548" target="_blank">
+        <i class="bi bi-whatsapp"></i>
+    </a>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <div class="modal fade" id="successModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content rounded-4 border-0 shadow">
+            <div class="modal-header border-0 pb-0">
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body text-center pb-5">
+                <div class="mb-3">
+                    <i class="bi bi-check-circle-fill text-success" style="font-size: 4rem;"></i>
+                </div>
+                <h3 class="fw-bold">Mensagem Enviada!</h3>
+                <p class="text-secondary">Obrigado pelo contacto. O Salvito responderá o mais breve possível!</p>
+                <button type="button" id="btnRedirect" class="btn btn-modern px-5" data-bs-dismiss="modal">Ok</button>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+     
+
+<script>
+    const contactForm = document.getElementById('contactForm');
+    const redirectBtn = document.getElementById('btnRedirect');
+    const successModalElement = document.getElementById('successModal');
+    const myModal = new bootstrap.Modal(successModalElement);
+
+    // 1. Quando submete o formulário
+    contactForm.addEventListener('submit', function(e) {
+        e.preventDefault();
+        myModal.show();
+        this.reset();
+    });
+
+    // 2. Quando clica no botão "Ok"
+    redirectBtn.addEventListener('click', function() {
+        window.location.href = 'homepage.html';
+    });
+
+    // 3. Opcional: Se ele fechar no "X", também redireciona (melhor experiência)
+    successModalElement.addEventListener('hidden.bs.modal', function () {
+        window.location.href = 'homepage.html';
+    });
+</script>
+</body>
+</html>

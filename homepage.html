@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Salvito O Saltarico | Festas e Insufláveis</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;800&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
+
+    <style>
+        /* Hover na Navbar */
+.navbar-nav .nav-link {
+    transition: color 0.3s ease;
+}
+
+.navbar-nav .nav-link:hover {
+    color: #e30613 !important; 
+}
+
+/* Garantir que o body e html ocupam a altura toda para evitar gaps */
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+/* Ajuste no footer para remover espaços indesejados */
+footer {
+    margin-top: 0;
+    position: relative;
+    width: 100%;
+}
+/* Vermelho apenas no Título Principal */
+footer h5[style*="color: var(--primary)"] {
+    color: #e30613 !important;
+}
+
+/* Vermelho nos ícones de contacto (Geo, Telefone, Envelope) */
+footer .list-unstyled .bi-geo-alt-fill,
+footer .list-unstyled .bi-telephone-fill,
+footer .list-unstyled .bi-envelope-fill {
+    color: #e30613 !important;
+}
+
+
+footer .fw-bold.text-white {
+    color: #ffffff !important;
+}
+        :root {
+            --primary: #e30613;
+            --secondary: #ffd500;
+            --dark: #1a1a1a;
+            --light: #f8f9fa;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background: var(--light);
+            color: var(--dark);
+            margin: 0;
+            padding: 0;
+        }
+
+        /* NAVBAR */
+        .navbar {
+            background: rgba(0, 0, 0, 0.9) !important;
+            backdrop-filter: blur(10px);
+            padding: 10px 0;
+            z-index: 2000;
+        }
+        .navbar-brand img { height: 50px; width: auto; }
+        .nav-link { color: white !important; font-weight: 600; margin: 0 10px; }
+
+        /* HERO section */
+        .hero {
+            min-height: 100vh;
+            background: linear-gradient(135deg, rgba(227, 6, 19, 0.8), rgba(0, 0, 0, 0.7)), 
+                        url('https://images.unsplash.com/photo-1533777857889-4be7c70b33f7?q=80&w=2070') center/cover;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+            padding-top: 80px;
+        }
+
+        .hero h1 {
+            font-size: clamp(2rem, 10vw, 4rem);
+            font-weight: 800;
+            margin-bottom: 15px;
+            text-shadow: 2px 2px 10px rgba(0,0,0,0.3);
+        }
+
+        .btn-modern {
+            background: var(--primary);
+            color: white !important;
+            border: none;
+            padding: 15px 40px;
+            font-weight: 700;
+            border-radius: 50px;
+            text-transform: uppercase;
+            transition: 0.3s;
+            box-shadow: 0 5px 15px rgba(227, 6, 19, 0.3);
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .btn-modern:hover {
+            transform: scale(1.05);
+            background: white;
+            color: var(--primary) !important;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+        }
+        .btn-outline-light:hover i {
+    color: #e30613 !important;
+    transition: color 0.3s ease;
+}
+
+        /* CARDS SERVIÇOS */
+        .card-modern {
+            background: white;
+            border-radius: 20px;
+            padding: 40px 20px;
+            transition: all 0.6s ease-out;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            height: 100%;
+        }
+
+        .js-reveal { opacity: 0; transform: translateY(30px); transition: all 0.6s ease-out; }
+        .js-reveal.visible { opacity: 1; transform: translateY(0); }
+
+        .card-modern i { font-size: 3.5rem; color: var(--primary); display: block; margin-bottom: 20px; }
+        .card-modern:hover { background: var(--primary); color: white; transform: translateY(-10px); }
+        .card-modern:hover i { color: white; }
+
+        /* WHATSAPP BANNER */
+        .whatsapp-banner {
+            background: #25D366;
+            color: white;
+            border-radius: 25px;
+            padding: 40px;
+            box-shadow: 0 15px 35px rgba(37, 211, 102, 0.2);
+            transition: transform 0.3s ease;
+        }
+        .whatsapp-banner:hover { transform: translateY(-5px); }
+
+        /* FOOTER */
+        footer a.text-secondary { transition: all 0.3s ease; display: inline-block; }
+        footer a.text-secondary:hover { color: var(--primary) !important; transform: translateX(8px); }
+        .social-icons a { transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275); display: inline-block; }
+        .social-icons a:hover { color: var(--primary) !important; transform: translateY(-5px) scale(1.2); }
+        
+        section { padding: 80px 0; }
+        /* Replica o estilo do Título Principal (Hero) */
+.title-hero-style {
+    font-size: clamp(1.8rem, 5vw, 3rem); /* Grande e responsivo como o topo */
+    font-weight: 800;
+    text-transform: uppercase;
+    text-shadow: 2px 2px 10px rgba(0,0,0,0.2);
+    margin-bottom: 10px;
+    line-height: 1.1;
+}
+
+/* Replica o subtítulo mais leve para contraste */
+.subtitle-hero-style {
+    font-weight: 400; /* Peso normal para contrastar com o 800 do título */
+    font-size: 1.2rem;
+    opacity: 0.9;
+    letter-spacing: 0.5px;
+}
+    </style>
+</head>
+
+<body>
+
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="#">
+                <img src="../img/logo.jpg" alt="Salvito Logo" onerror="this.style.display='none'">
+                <span class="text-white fw-bold ms-2">SALVITO</span>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#menu">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="menu">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="#">Início</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#servicos">Serviços</a></li>
+                    <li class="nav-item"><a class="nav-link" href="galeria.html">Galeria</a></li>
+                    <li class="nav-item"><a class="nav-link" href="contacto.html">Contacto</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <section class="hero">
+        <div class="container">
+            <h1>SALVITO O SALTARICO</h1>
+            <p class="lead mb-4">Queres diversão ao mais alto nível? Somos a opção certa!</p>
+            <a href="#servicos" class="btn btn-modern">Saber Mais</a>
+        </div>
+    </section>
+
+    <section id="servicos" class="text-center">
+        <div class="container">
+            <h2 class="mb-5 fw-bold">Os nossos Serviços</h2>
+            <div class="row g-4">
+                <div class="col-md-4"><div class="card-modern js-reveal"><i class="bi bi-rocket-takeoff"></i><h5 class="fw-bold">Insufláveis</h5></div></div>
+                <div class="col-md-4"><div class="card-modern js-reveal"><i class="bi bi-person-walking"></i><h5 class="fw-bold">Trampolins</h5></div></div>
+                <div class="col-md-4"><div class="card-modern js-reveal"><i class="bi bi-controller"></i><h5 class="fw-bold">Jogos</h5></div></div>
+                <div class="col-md-4"><div class="card-modern js-reveal"><i class="bi bi-palette"></i><h5 class="fw-bold">Pinturas Faciais</h5></div></div>
+                <div class="col-md-4"><div class="card-modern js-reveal"><i class="bi bi-balloon"></i><h5 class="fw-bold">Balões</h5></div></div>
+                <div class="col-md-4"><div class="card-modern js-reveal"><i class="bi bi-emoji-laughing"></i><h5 class="fw-bold">Animação</h5></div></div>
+            </div>
+            <div class="text-center mt-5 js-reveal">
+                <a href="galeria.html" class="btn btn-modern">
+                    <i class="bi bi-images me-2"></i> Ver a Galeria Completa
+                </a>
+            </div>
+        </div>
+    </section>
+
+<section id="contacto" class="bg-white">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-10 col-lg-9 js-reveal text-center">
+                <div class="p-5 rounded-5 shadow-lg" style="background-color: #e30613; color: white;">
+                    
+                    <h2 class="title-hero-style">
+                        Vamos planear a tua próxima festa?
+                    </h2>
+                    
+                    <p class="subtitle-hero-style mb-5">
+                        Escolha a forma mais cómoda para falar connosco
+                    </p>
+                    
+                    <div class="d-flex flex-column flex-sm-row justify-content-center gap-4">
+                        <a href="https://wa.me/351924295548" target="_blank" class="btn btn-light btn-lg fw-bold rounded-pill px-5 py-3 shadow-sm border-0">
+                            <i class="bi bi-whatsapp me-2" style="color: #e30613;"></i> WhatsApp
+                        </a>
+                        
+                        <a href="contacto.html" class="btn btn-outline-light btn-lg fw-bold rounded-pill px-5 py-3">
+                            <i class="bi bi-envelope-at me-2"></i> Email
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+  <footer class="text-white pt-5 pb-3" style="background-color: var(--dark);">
+        <div class="container">
+            <div class="row g-4">
+                <div class="col-lg-4 col-md-6">
+                    <h5 class="fw-bold mb-4" style="color: var(--primary);">Salvito O Saltarico</h5>
+                    <p class="text-secondary">Especialistas em transformar eventos em momentos mágicos.</p>
+                    <div class="mt-4 social-icons">
+                        <a href="https://www.facebook.com/p/Salvito-O-Saltarico-Aluguer-de-Insufl%C3%A1veis-61572297310450/" target="_blank" class="text-white me-3 fs-4"><i class="bi bi-facebook"></i></a>
+                        <a href="https://www.instagram.com/salvitoosaltarico/" target="_blank" class="text-white me-3 fs-4"><i class="bi bi-instagram"></i></a>
+                    </div>
+                </div>
+
+                <div class="col-lg-2 col-md-6">
+                    <h5 class="fw-bold mb-4">Navegação</h5>
+                    <ul class="list-unstyled">
+                        <li class="mb-2"><a href="homepage.html" class="text-secondary text-decoration-none">Início</a></li>
+                        <li class="mb-2"><a href="homepage.html#servicos" class="text-secondary text-decoration-none">Serviços</a></li>
+                        <li class="mb-2"><a href="galeria.html" class="text-secondary text-decoration-none">Galeria</a></li>
+                        <li class="mb-2"><a href="homepage.html#contacto" class="text-secondary text-decoration-none">Contacto</a></li>
+                    </ul>
+                </div>
+
+                <div class="col-lg-3 col-md-6">
+                    <h5 class="fw-bold mb-4">Contacto</h5>
+                    <ul class="list-unstyled text-secondary">
+                        <li class="mb-3"><i class="bi bi-geo-alt-fill me-2 text-white"></i> Região de Viseu</li>
+                        <li class="mb-3"><i class="bi bi-telephone-fill me-2 text-white"></i> +351 925 112 939</li>
+                        <li class="mb-3"><i class="bi bi-envelope-fill me-2 text-white"></i> marcelo_filipe93@hotmail.com</li>
+                    </ul>
+                </div>
+
+                <div class="col-lg-3 col-md-6 text-center text-md-start">
+                    <h5 class="fw-bold mb-4">Horário</h5>
+                    <p class="text-secondary mb-1">Segunda - Sábado</p>
+                    <p class="fw-bold text-white">09:00h — 19:00h</p>
+                    <p class="text-secondary mb-1">Eventos</p>
+                    <p class="fw-bold text-white">Sob Agendamento</p>
+                </div>
+            </div>
+            </div>
+            <hr class="my-4" style="opacity: 0.1;">
+            <div class="text-center text-secondary small">
+                <p>&copy; 2026 Salvito O Saltarico. Todos os direitos reservados.</p>
+            </div>
+        </div>
+    </footer>
+           
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                    }
+                });
+            }, { threshold: 0.1 });
+            document.querySelectorAll('.js-reveal').forEach(el => observer.observe(el));
+        });
+    </script>
+</body>
+</html>

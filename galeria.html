@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Galeria | Salvito O Saltarico</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;800&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
+
+    <style>
+        /* Vermelho apenas no Título Principal */
+footer h5[style*="color: var(--primary)"] {
+    color: #e30613 !important;
+}
+
+/* Vermelho nos ícones de contacto (Geo, Telefone, Envelope) */
+footer .list-unstyled .bi-geo-alt-fill,
+footer .list-unstyled .bi-telephone-fill,
+footer .list-unstyled .bi-envelope-fill {
+    color: #e30613 !important;
+}
+
+
+footer .fw-bold.text-white {
+    color: #ffffff !important;
+}
+        .btn-modern {
+    background: #e30613; /* O teu vermelho oficial */
+    color: white !important;
+    border: none;
+    padding: 15px 40px;
+    font-weight: 700;
+    border-radius: 50px;
+    text-transform: uppercase;
+    transition: 0.3s;
+    box-shadow: 0 5px 15px rgba(227, 6, 19, 0.3);
+    text-decoration: none;
+    display: inline-block;
+}
+
+.btn-modern:hover {
+    transform: scale(1.05);
+    background: #1a1a1a; /* Muda para preto ou uma cor de destaque no hover */
+    color: white !important;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+}
+        :root {
+            --primary: #e30613;
+            --secondary: #ffd500;
+            --dark: #1a1a1a;
+            --light: #f8f9fa;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background: var(--light);
+            color: var(--dark);
+            margin: 0;
+            padding: 0;
+        }
+
+        /* NAVBAR */
+        .navbar {
+            background: rgba(0, 0, 0, 0.9) !important;
+            backdrop-filter: blur(10px);
+            padding: 10px 0;
+            z-index: 2000;
+        }
+        .navbar-brand img { height: 50px; width: auto; }
+        .nav-link { color: white !important; font-weight: 600; margin: 0 10px; }
+        .nav-link:hover { color: var(--primary) !important; }
+
+        /* HEADER */
+        .gallery-header {
+            padding: 150px 0 60px;
+            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), 
+                        url('https://images.unsplash.com/photo-1533777857889-4be7c70b33f7?q=80&w=2070') center/cover;
+            color: white;
+            text-align: center;
+        }
+
+        /* CARDS DA GALERIA */
+        .gallery-item {
+            position: relative;
+            border-radius: 20px;
+            overflow: hidden;
+            aspect-ratio: 4/3;
+            cursor: pointer;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+            background: #fff;
+        }
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        .gallery-overlay {
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(227, 6, 19, 0.9);
+            display: flex; flex-direction: column; align-items: center; justify-content: center;
+            opacity: 0; transition: opacity 0.3s ease;
+            color: white; padding: 20px; text-align: center;
+        }
+        .gallery-item:hover img { transform: scale(1.1); }
+        .gallery-item:hover .gallery-overlay { opacity: 1; }
+
+        /* WHATSAPP */
+        .whatsapp { position: fixed; bottom: 25px; right: 25px; background: #25D366; color: white; width: 60px; height: 60px; display: flex; align-items: center; justify-content: center; border-radius: 50%; font-size: 30px; z-index: 3000; text-decoration: none; box-shadow: 0 10px 20px rgba(0,0,0,0.3); }
+
+        /* FOOTER */
+        footer a.text-secondary { transition: all 0.3s ease; display: inline-block; }
+        footer a.text-secondary:hover { color: var(--primary) !important; transform: translateX(8px); }
+        .social-icons a { transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275); display: inline-block; }
+        .social-icons a:hover { color: var(--primary) !important; transform: translateY(-5px) scale(1.2); }
+        /* Estilo idêntico ao "Salvito o Saltarico" */
+.gallery-title-display {
+    font-size: clamp(2rem, 8vw, 4rem); /* Responsivo: aumenta em desktop, diminui em mobile */
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: -1.5px;
+    text-shadow: 2px 2px 10px rgba(0,0,0,0.3);
+    margin-bottom: 10px;
+    line-height: 1.1;
+}
+
+/* Subtítulo mais leve para contraste */
+.gallery-subtitle-light {
+    font-weight: 400; /* Peso fino para destacar o bold do título */
+    font-size: clamp(1rem, 3vw, 1.25rem);
+    opacity: 0.9;
+    letter-spacing: 0.5px;
+}
+    </style>
+</head>
+<body>
+
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="homepage.html">
+                <img src="../img/logo.jpg" alt="Salvito Logo" onerror="this.style.display='none'">
+                <span class="text-white fw-bold ms-2">SALVITO</span>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#menu">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="menu">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="homepage.html">Início</a></li>
+                    <li class="nav-item"><a class="nav-link" href="homepage.html#servicos">Serviços</a></li>
+                    <li class="nav-item"><a class="nav-link" href="galeria.html" style="color: var(--primary) !important;">Galeria</a></li>
+                    <li class="nav-item"><a class="nav-link" href="contacto.html">Contacto</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+  <header class="gallery-header">
+    <div class="container">
+        <h1 class="gallery-title-display">Os nossos insufláveis</h1>
+        
+        <p class="gallery-subtitle-light">Espreita a diversidade de insufláveis e atividades que temos!</p>
+    </div>
+</header>
+
+    <section class="py-5">
+        <div class="container">
+            <div class="row g-4">
+                <div class="col-md-4 col-sm-6">
+                    <div class="gallery-item">
+                        <img src="https://images.unsplash.com/photo-1517164850305-99a3e65bb105?q=80&w=2070" alt="Insuflável">
+                        <div class="gallery-overlay">
+                            <i class="bi bi-eye fs-1 mb-2"></i>
+                            <h5 class="fw-bold">Festa de Aniversário</h5>
+                            <p>Castelo Insuflável Premium</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 col-sm-6">
+                    <div class="gallery-item">
+                        <img src="https://images.unsplash.com/photo-1533777857889-4be7c70b33f7?q=80&w=2070" alt="Evento">
+                        <div class="gallery-overlay">
+                            <i class="bi bi-eye fs-1 mb-2"></i>
+                            <h5 class="fw-bold">Evento Escolar</h5>
+                            <p>Pista de Obstáculos</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 col-sm-6">
+                    <div class="gallery-item">
+                        <img src="https://images.unsplash.com/photo-1561501900-3701fa6a0f64?q=80&w=2070" alt="Animação">
+                        <div class="gallery-overlay">
+                            <i class="bi bi-eye fs-1 mb-2"></i>
+                            <h5 class="fw-bold">Pinturas Faciais</h5>
+                            <p>Animação e Diversão</p>
+                        </div>
+                    </div>
+                </div>
+                </div>
+        </div>
+    </section>
+
+    <a class="whatsapp" href="https://wa.me/351924295548" target="_blank">
+        <i class="bi bi-whatsapp"></i>
+    </a>
+    <section id="testemunhos" style="background-color: #eee; padding: 80px 0;">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h2 class="fw-bold">O que dizem os nossos clientes</h2>
+                <div style="width: 80px; height: 4px; background: var(--primary); margin: 0 auto;"></div>
+            </div>
+
+            <div class="row g-4">
+                <div class="col-md-4">
+                    <div class="bg-white p-4 rounded-4 shadow-sm h-100 border-bottom border-4 border-danger">
+                        <div class="mb-3 text-danger">
+                            <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
+                        </div>
+                        <p class="fst-italic text-secondary">"O insuflável estava impecável e os miúdos adoraram! O serviço foi super pontual. Recomendo a 100%!"</p>
+                        <h6 class="fw-bold mb-0">Maria João</h6>
+                        <small class="text-muted">Aniversário em Viseu</small>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="bg-white p-4 rounded-4 shadow-sm h-100 border-bottom border-4 border-danger">
+                        <div class="mb-3 text-danger">
+                            <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
+                        </div>
+                        <p class="fst-italic text-secondary">"Contratámos as pinturas faciais e o trampolim. A equipa é fantástica com as crianças. Muito profissionais."</p>
+                        <h6 class="fw-bold mb-0">Ricardo Santos</h6>
+                        <small class="text-muted">Evento de Empresa</small>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="bg-white p-4 rounded-4 shadow-sm h-100 border-bottom border-4 border-danger">
+                        <div class="mb-3 text-danger">
+                            <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
+                        </div>
+                        <p class="fst-italic text-secondary">"A melhor opção para festas infantis. Material seguro e atendimento nota 10. Vou repetir de certeza!"</p>
+                        <h6 class="fw-bold mb-0">Carla Antunes</h6>
+                        <small class="text-muted">Batizado</small>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="bg-white p-4 rounded-4 shadow-sm h-100 border-bottom border-4 border-danger">
+                        <div class="mb-3 text-danger">
+                            <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
+                        </div>
+                        <p class="fst-italic text-secondary">"Os matraquilhos foram o sucesso da festa dos adultos também! Excelente estado de conservação."</p>
+                        <h6 class="fw-bold mb-0">Paulo Ferreira</h6>
+                        <small class="text-muted">Festa Privada</small>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="bg-white p-4 rounded-4 shadow-sm h-100 border-bottom border-4 border-danger">
+                        <div class="mb-3 text-danger">
+                            <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
+                        </div>
+                        <p class="fst-italic text-secondary">"Serviço rápido na montagem e desmontagem. Preços muito justos para a qualidade que oferecem."</p>
+                        <h6 class="fw-bold mb-0">Sónia Lopes</h6>
+                        <small class="text-muted">Aniversário</small>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="bg-white p-4 rounded-4 shadow-sm h-100 border-bottom border-4 border-danger">
+                        <div class="mb-3 text-danger">
+                            <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
+                        </div>
+                        <p class="fst-italic text-secondary">"Super atenciosos desde o primeiro contacto. Os balões e a animação tornaram o dia especial."</p>
+                        <h6 class="fw-bold mb-0">Bruno Miguel</h6>
+                        <small class="text-muted">Evento Comunitário</small>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="py-5 text-center">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-8 js-reveal">
+                <p class="lead mb-4">A satisfação dos nossos clientes é a nossa maior prioridade!</p>
+                
+                <a href="https://www.facebook.com/p/Salvito-O-Saltarico-Aluguer-de-Insufl%C3%A1veis-61572297310450/" 
+                   target="_blank" 
+                   class="btn btn-modern">
+                    <i class="bi bi-facebook me-2"></i> Ver mais Testemunhos
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+ <footer class="text-white pt-5 pb-3" style="background-color: var(--dark);">
+        <div class="container">
+            <div class="row g-4">
+                <div class="col-lg-4 col-md-6">
+                    <h5 class="fw-bold mb-4" style="color: var(--primary);">Salvito O Saltarico</h5>
+                    <p class="text-secondary">Especialistas em transformar eventos em momentos mágicos.</p>
+                    <div class="mt-4 social-icons">
+                        <a href="https://www.facebook.com/p/Salvito-O-Saltarico-Aluguer-de-Insufl%C3%A1veis-61572297310450/" target="_blank" class="text-white me-3 fs-4"><i class="bi bi-facebook"></i></a>
+                        <a href="https://www.instagram.com/salvitoosaltarico/" target="_blank" class="text-white me-3 fs-4"><i class="bi bi-instagram"></i></a>
+                    </div>
+                </div>
+
+                <div class="col-lg-2 col-md-6">
+                    <h5 class="fw-bold mb-4">Navegação</h5>
+                    <ul class="list-unstyled">
+                        <li class="mb-2"><a href="homepage.html" class="text-secondary text-decoration-none">Início</a></li>
+                        <li class="mb-2"><a href="homepage.html#servicos" class="text-secondary text-decoration-none">Serviços</a></li>
+                        <li class="mb-2"><a href="galeria.html" class="text-secondary text-decoration-none">Galeria</a></li>
+                        <li class="mb-2"><a href="homepage.html#contacto" class="text-secondary text-decoration-none">Contacto</a></li>
+                    </ul>
+                </div>
+
+                <div class="col-lg-3 col-md-6">
+                    <h5 class="fw-bold mb-4">Contacto</h5>
+                    <ul class="list-unstyled text-secondary">
+                        <li class="mb-3"><i class="bi bi-geo-alt-fill me-2 text-white"></i> Região de Viseu</li>
+                        <li class="mb-3"><i class="bi bi-telephone-fill me-2 text-white"></i> +351 925 112 939</li>
+                        <li class="mb-3"><i class="bi bi-envelope-fill me-2 text-white"></i> marcelo_filipe93@hotmail.com</li>
+                    </ul>
+                </div>
+
+                <div class="col-lg-3 col-md-6 text-center text-md-start">
+                    <h5 class="fw-bold mb-4">Horário</h5>
+                    <p class="text-secondary mb-1">Segunda - Sábado</p>
+                    <p class="fw-bold text-white">09:00h — 19:00h</p>
+                    <p class="text-secondary mb-1">Eventos</p>
+                    <p class="fw-bold text-white">Sob Agendamento</p>
+                </div>
+            </div>
+            </div>
+            <hr class="my-4" style="opacity: 0.1;">
+            <div class="text-center text-secondary small">
+                <p>&copy; 2026 Salvito O Saltarico. Todos os direitos reservados.</p>
+            </div>
+        </div>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
